@@ -152,7 +152,7 @@ system.time({
       mds[[k]] <- md
     }  
     d_res_rs_avg <- d_res_rs %>% summarize(ntrees = mean(ntrees), runtm = mean(runtm), auc_rs_avg = mean(auc_rs),
-                                           auc_rs_std = sd(auc_rs))
+                                           auc_rs_std = sd(auc_rs)/sqrt(n_resample))   # std of the mean!
     
     # consider the model as the average of the models from resamples 
     # TODO?: alternatively could retrain the "final" model on all of data (early stoping or avg number of trees?)
