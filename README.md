@@ -1,4 +1,4 @@
 
-## Tuning GBMs
+## Tuning GBMs (hyperparameter tuning)
 
 
