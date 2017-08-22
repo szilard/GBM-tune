@@ -54,7 +54,7 @@ size <- 100e3
 
 
 
-n_random <- 2
+n_random <- 100
 
 params_grid <- expand.grid(                      # default
   num_leaves = c(30,100,200,500,1000,2000,5000), # 31 (was 127)
@@ -112,7 +112,7 @@ system.time({
     params <- as.list(params_random[krpm,])
     
     ## resample
-    n_resample <- 2
+    n_resample <- 20
     
     p_train <- 0.8
     p_earlystop <- 0.1
