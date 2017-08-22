@@ -114,6 +114,7 @@ system.time({
       rocr_pred <- prediction(phat, d_modelselec[,p+1])
       auc_rs <- performance(rocr_pred, "auc")@y.values[[1]]
       
+      ## TODO: not good, need either retrain model or average the scores, not the AUC
       phat <- predict(md, data = d_test[,1:p])
       rocr_pred <- prediction(phat, d_test[,p+1])
       auc_test <- performance(rocr_pred, "auc")@y.values[[1]]
