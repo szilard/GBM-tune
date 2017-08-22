@@ -173,5 +173,9 @@ d_pm_res <- cbind(params_random, d_res)
 
 d_pm_res
 
+
+## TODO: ensemble/avg the top 2,3,...10 models (would need to save all the models)
+
+
 fwrite(d_pm_res, file = "res.csv")
 
