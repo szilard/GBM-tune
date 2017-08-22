@@ -54,7 +54,7 @@ size <- 100e3
 
 
 
-n_random <- 100
+n_random <- 100      ## TODO: 1000?
 
 params_grid <- expand.grid(                      # default
   num_leaves = c(30,100,200,500,1000,2000,5000), # 31 (was 127)
@@ -81,7 +81,8 @@ d <- d1_train[sample(1:nrow(d1_train), size),]
 
 
 ## TODO: resample 
-d_test <- d1_test[sample(1:nrow(d1_test), 100e3),]
+size_test <- 100e3
+d_test <- d1_test[sample(1:nrow(d1_test), size_test),]
 
 
 
@@ -112,10 +113,10 @@ system.time({
     params <- as.list(params_random[krpm,])
     
     ## resample
-    n_resample <- 20
+    n_resample <- 20     ## TODO: 10?
     
-    p_train <- 0.8
-    p_earlystop <- 0.1
+    p_train <- 0.8       ## TODO: change? (80-10-10 split now)
+    p_earlystop <- 0.1   
     p_modelselec <- 1 - p_train - p_earlystop
     
     mds <- list()
@@ -137,7 +138,7 @@ system.time({
       
       runtm <- system.time({
         md <- lgb.train(data = dlgb_train, objective = "binary",
-                        num_threads = parallel::detectCores()/2,
+                        num_threads = parallel::detectCores()/2,     # = number of "real" cores
                         params = params,
                         nrounds = 10000, early_stopping_rounds = 10, valid = list(valid = dlgb_earlystop), 
                         categorical_feature = cols_cats, 
@@ -175,6 +176,9 @@ d_pm_res
 
 
 ## TODO: ensemble/avg the top 2,3,...10 models (would need to save all the models)
+
+## TODO: easier: see the goodness as a function of how many random iterations 10,100,1000 (can be done in
+## the other analysis file)
 
 
 fwrite(d_pm_res, file = "res.csv")
