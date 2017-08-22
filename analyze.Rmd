@@ -6,6 +6,7 @@ library(ggplot2)
 
 d_pm_res <- fread("res.csv")
 
+
 d_pm_res %>% mutate(rank = dense_rank(desc(auc_rs_avg))) %>% ggplot() + geom_point(aes(x = rank, y = auc_rs_avg)) +
   geom_errorbar(aes(x = rank, ymin = auc_rs_avg-auc_rs_std, ymax = auc_rs_avg+auc_rs_std), width = 0.3)
 
@@ -22,5 +23,22 @@ d_pm_res %>% arrange(desc(auc_rs_avg)) %>% head(10)
 
 d_pm_res %>% arrange(desc(auc_test)) %>% head(10)
 
-```
 
+d_pm_res %>% arrange(desc(auc_rs_avg)) %>% tail(10)
+
+
+d_pm_res %>% mutate(rank = dense_rank(desc(auc_rs_avg))) %>% ggplot() + geom_point(aes(x = rank, y = num_leaves)) + scale_y_log10()
+
+d_pm_res %>% mutate(rank = dense_rank(desc(auc_rs_avg))) %>% ggplot() + geom_point(aes(x = rank, y = learning_rate)) + scale_y_log10()
+
+d_pm_res %>% mutate(rank = dense_rank(desc(auc_rs_avg))) %>% ggplot() + geom_point(aes(x = rank, y = min_data_in_leaf)) + scale_y_log10()
+
+d_pm_res %>% mutate(rank = dense_rank(desc(auc_rs_avg))) %>% ggplot() + geom_point(aes(x = rank, y = feature_fraction)) 
+
+d_pm_res %>% mutate(rank = dense_rank(desc(auc_rs_avg))) %>% ggplot() + geom_point(aes(x = rank, y = bagging_fraction)) 
+
+d_pm_res %>% mutate(rank = dense_rank(desc(auc_rs_avg))) %>% ggplot() + geom_point(aes(x = rank, y = lambda_l1)) 
+
+d_pm_res %>% mutate(rank = dense_rank(desc(auc_rs_avg))) %>% ggplot() + geom_point(aes(x = rank, y = lambda_l2)) 
+
+```
