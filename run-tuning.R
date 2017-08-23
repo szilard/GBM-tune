@@ -85,6 +85,15 @@ size_test <- 100e3
 d_test <- d1_test[sample(1:nrow(d1_test), size_test),]
 
 
+# ## first run: get train/test with same distribution to check overfitting of best models
+# idx <- sample(1:nrow(d1_train), size)
+# d <- d1_train[idx,]            
+# d_test <- d1_train[sample(setdiff(1:nrow(d1_train),idx), size_test),]
+# #user     system    elapsed 
+# #240025.539   4094.378  31870.404 
+# ## Results: AUC_test>AUC_rs seems it does not overfit, either underfit or sample variation
+# ## TODO: resample train/test to see if underfit or sample variation
+
 
 
 # warm up
@@ -113,7 +122,7 @@ for (krpm in 1:nrow(params_random)) {
   params <- as.list(params_random[krpm,])
     
   ## resample
-  n_resample <- 20     ## TODO: 10?
+  n_resample <- 20     ## TODO: 100?
 
   p_train <- 0.8       ## TODO: change? (80-10-10 split now)
   p_earlystop <- 0.1   
