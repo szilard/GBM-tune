@@ -41,4 +41,14 @@ d_pm_res %>% mutate(rank = dense_rank(desc(auc_rs_avg))) %>% ggplot() + geom_poi
 
 d_pm_res %>% mutate(rank = dense_rank(desc(auc_rs_avg))) %>% ggplot() + geom_point(aes(x = rank, y = lambda_l2)) 
 
+
+
+d_pm_res %>% mutate(rank = dense_rank(desc(auc_rs_avg))) %>% ggplot() + geom_point(aes(x = rank, y = ntrees))
+
+d_pm_res %>% mutate(rank = dense_rank(desc(auc_rs_avg))) %>% ggplot() + geom_point(aes(x = rank, y = ntrees)) + scale_y_log10(breaks=c(30,100,300,1000,3000))
+
+d_pm_res %>% mutate(rank = dense_rank(desc(auc_rs_avg))) %>% ggplot() + geom_point(aes(x = rank, y = runtm)) 
+
+d_pm_res %>% mutate(rank = dense_rank(desc(auc_rs_avg))) %>% ggplot() + geom_point(aes(x = rank, y = runtm)) + scale_y_log10(breaks=c(1,3,10,30,100))
+
 ```
