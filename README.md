@@ -3,12 +3,13 @@
 
 The goal of this repo is to study the impact of having one dataset/sample/"the dataset" only 
 when training and tuning machine learning models in practice (or in competitions) 
-on the prediction accuracy on (new) data 
-that come from a (slightly) different distribution (due to non-stationarity).
+on the prediction accuracy on new data 
+that usually comes from a (slightly) different distribution (due to non-stationarity).
 
-To begin with/to keep things simple we focus on binary classification, use only one source dataset 
-with mix of numeric and categorical features, don't perform feature engineering, and
-tune only GBMs with lightgbm and random search (might also ensemble the best models).
+To to keep things simple/to begin with we focus on binary classification, use only one source dataset 
+with mix of numeric and categorical features, don't perform feature engineering,
+tune only GBMs with lightgbm and random search (might also ensemble the best models), and 
+use only AUC as a measure of accuracy.
 
 From the source data we pick 1 year of data for training/tuning and the following 1 year for testing (hold-out).
 We take samples of give sizes from these. (**TODO:** For now we have only 1 year and 1 sample of each train/test.
