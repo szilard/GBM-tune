@@ -54,10 +54,14 @@ size <- 100e3
 
 
 
-n_random <- 2      ## TODO: 1000?
+n_random <- 100      ## TODO: 1000?
 
 params_grid <- expand.grid(                      # default
   num_leaves = c(100,200,500,1000,2000,5000),    # 31 (was 127)
+## TODO: num_leaves should be size dependent
+## 100K: num_leaves = c(100,200,500,1000,2000,5000)   DONE for 3-test_rs
+## 10K:  num_leaves = c(20,50,100,200,500)  DONE for 3-test_rs
+## 10M:  should be higher than 100K   (used same as 100K in 2-train_test_1each)
   learning_rate = c(0.01,0.03,0.1),              # 0.1
   min_data_in_leaf = c(5,10,20,50),              # 20 (was 100)
   feature_fraction = c(0.6,0.8,1),               # 1 
