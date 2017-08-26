@@ -1,0 +1,24 @@
+```{r}
+
+library(data.table)
+library(dplyr)
+library(ggplot2)
+
+d_pm_res <- fread("res.csv")
+
+
+d_pm_res %>% mutate(rank = dense_rank(desc(auc_rs_avg))) %>% ggplot() + geom_point(aes(x = rank, y = auc_rs_avg)) +
+  geom_errorbar(aes(x = rank, ymin = auc_rs_avg-auc_rs_std, ymax = auc_rs_avg+auc_rs_std), width = 1)
+
+d_pm_res %>% ggplot(aes(x = auc_test_avg, y = auc_rs_avg)) + geom_point() +
+  geom_errorbar(aes(ymin = auc_rs_avg-auc_rs_std, ymax = auc_rs_avg+auc_rs_std), width = 0.0003) +
+  geom_abline(slope = 1, color = "grey70") +
+  geom_errorbarh(aes(xmin = auc_test_avg-auc_test_sd, xmax = auc_test_avg+auc_test_sd), height = 0.0003)
+
+auc_test_top <- sort(d_pm_res$auc_test_avg, decreasing = TRUE)[10]
+d_pm_res %>% mutate(rank = dense_rank(desc(auc_rs_avg))) %>% mutate(is_top = auc_test_avg>=auc_test_top) %>%
+  ggplot(aes(color = is_top)) + geom_point(aes(x = rank, y = auc_rs_avg)) +
+  geom_errorbar(aes(x = rank, ymin = auc_rs_avg-auc_rs_std, ymax = auc_rs_avg+auc_rs_std), width = 0.3)
+
+
+```
