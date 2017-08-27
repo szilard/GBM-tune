@@ -83,6 +83,8 @@ Size    |  eval AUC      |  test AUC     |
 100K    |   0.815        |   0.745       |
 1M      |   0.952        |   0.847       |
 
+More details [here](https://htmlpreview.github.io/?https://github.com/szilard/GBM-tune/blob/master/2-train_test_1each/analyze-1M-100.html).
+
 
 ### Train set size 10K records 
 
@@ -97,6 +99,7 @@ The best models based on evaluation AUC have deeper trees (evaluation AUC `0.701
 the best models on test have shallower trees (evaluation AUC `0.682`, test AUC `0.670`).
 Therefore one could reduce overfitting by restricting the space to shallower trees (effectively regularizing).
 
-More details [here](https://htmlpreview.github.io/?https://github.com/szilard/GBM-tune/blob/master/3-test_rs/analyze-10K.html).
+More details [here](https://htmlpreview.github.io/?https://github.com/szilard/GBM-tune/blob/master/2-train_test_1each/analyze-10K-100.html) and
+[here](https://htmlpreview.github.io/?https://github.com/szilard/GBM-tune/blob/master/3-test_rs/analyze-10K.html).
 
 
