@@ -45,7 +45,10 @@ Test vs evaluation AUC (with errorbars based on train 80-10-10 and test resampli
 
 
 
-A good choice of hyperparameters seems to be:
+The top models selected by evaluation AUC are also top in test AUC, the correlation between
+evaluation/model selection AUC and test AUC is high (Pearson and rank correlation `~0.75`).
+
+A top model is:
 ```
 num_leaves = 1000
 learning_rate = 0.03
@@ -54,7 +57,7 @@ feature_fraction = 0.8
 bagging_fraction = 0.8
 ```
 
-For this combination, early stopping happens at `~200` trees in `~10 sec` for each resample (on a server with 16 cores/8 real cores) 
+For this combination, early stopping happens at `~200` trees in `~10 sec` for each resample (on a server with 16 cores/8 physical cores) 
 leading to evaluation AUC `0.815` and test AUC `0.745` (the training data is coming from one given year, while the test
 data is coming from the next year, therefore the decrease in prediction accuracy).
 
@@ -62,6 +65,29 @@ The runtime and number of trees for the different hyperparameter combinations va
 for the 100 random hyperparameter trials with 20 train resamples each is `~6 hrs`, while adding prediction time we
 arrive at `~8 hrs` total runtime (the experiment can be easily parallelized to multiple servers as the trials in the random
 search are completely independent).
+
+More details [here]().
+
+
+### Train set size 1M records 
+
+The correlation between evaluation/model selection AUC and test AUC is even higher (Pearson/rank correlation `~0.97`),
+and naturally the top models selected by evaluation AUC are also top in test AUC even more so.
+
+The best models have now a larger `num_leaves` (as one would expect) and the early stopping stops later (more trees).
+Rune time is approximately `10x`, best evaluation and test AUC in the table below.
+
+
+Size    |  eval AUC      |  test AUC | 
+--------|----------------|-----------|
+10K     |  0.682 / 0.701 |   0.670   |
+100K    |   0.815        |   0.745   |
+1M      |   0.952        |   0.847   |
+
+
+### Train set size 10K records 
+
+The best models selected based on evaluation AUC are not anymore the best models on test, the correlation is now low `~0.25`.
 
 
 
