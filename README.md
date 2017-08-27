@@ -55,10 +55,10 @@ bagging_fraction = 0.8
 ```
 
 For this combination, early stopping happens at `~200` trees in `~10 sec` for each resample (on a server with 16 cores/8 real cores) 
-leaqding to evaluation AUC `0.815` and test AUC `0.745` (training data is coming from one given year, while the test
+leading to evaluation AUC `0.815` and test AUC `0.745` (the training data is coming from one given year, while the test
 data is coming from the next year, therefore the decrease in prediction accuracy).
 
-The runtime and number of trees for the different hyperparameter combinations vary, but the total training time
+The runtime and number of trees for the different hyperparameter combinations vary, the total training time
 for the 100 random hyperparameter trials with 20 train resamples each is `~6 hrs`, while adding prediction time we
 arrive at `~8 hrs` total runtime (the experiment can be easily parallelized to multiple servers as the trials in the random
 search are completely independent).
