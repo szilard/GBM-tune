@@ -33,17 +33,15 @@ the test set itself as well, therefore we obtain averages and standard errors fo
 The evaluation AUC of the 100 random hyperparameter trials vs their ranking
 (errorbars based on train 80-10-10 resampling):
 
-
+TODO: fig
 
 The test AUC vs evaluation ranking (errorbars based on testset resampling):
 
-
-
+TODO: fig
 
 Test vs evaluation AUC (with errorbars based on train 80-10-10 and test resampling, respectively):
 
-
-
+TODO: fig
 
 The top models selected by evaluation AUC are also top in test AUC, the correlation between
 evaluation/model selection AUC and test AUC is high (Pearson and rank correlation `~0.75`).
@@ -74,15 +72,16 @@ More details [here]().
 The correlation between evaluation/model selection AUC and test AUC is even higher (Pearson/rank correlation `~0.97`),
 and naturally the top models selected by evaluation AUC are also top in test AUC even more so.
 
-The best models have now a larger `num_leaves` (as one would expect) and the early stopping stops later (more trees).
+The best models have now a larger `num_leaves` (as one would expect since there is more data and one can build deeper
+trees without overfitting) and the early stopping stops later (more trees).
 Rune time is approximately `10x`, best evaluation and test AUC in the table below.
 
 
-Size    |  eval AUC      |  test AUC | 
---------|----------------|-----------|
-10K     |  0.682 / 0.701 |   0.670   |
-100K    |   0.815        |   0.745   |
-1M      |   0.952        |   0.847   |
+Size    |  eval AUC      |  test AUC     | 
+--------|----------------|---------------|
+10K     | 0.701 / 0.682  | 0.660 / 0.670 |
+100K    |   0.815        |   0.745       |
+1M      |   0.952        |   0.847       |
 
 
 ### Train set size 10K records 
@@ -90,5 +89,14 @@ Size    |  eval AUC      |  test AUC |
 The best models selected based on evaluation AUC are not anymore the best models on test, the correlation is now low `~0.25`.
 
 ![](3-test_rs/fig-10K-AUCcorr.png)
+
+It seems 10K is just *not enough data* for this (some of the variables have 100s of categories and some appear with low frequency), 
+and even with cross validation there is some kind of *overfitting* here. 
+
+The best models based on evaluation AUC have deeper trees (evaluation AUC `0.701`, but low test AUC `0.660`), while
+the best models on test have shallower trees (evaluation AUC `0.682`, but low test AUC `0.670`).
+Therefore one can reduce overfitting by restricting the space to shallower trees (effectively regularizing).
+
+More details [here](https://htmlpreview.github.io/?https://github.com/szilard/GBM-tune/blob/master/3-test_rs/analyze-10K.html).
 
 
