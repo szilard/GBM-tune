@@ -94,8 +94,8 @@ It seems 10K is just *not enough data* for this (some of the variables have 100s
 and even with cross validation there is some kind of *overfitting* here. 
 
 The best models based on evaluation AUC have deeper trees (evaluation AUC `0.701`, but low test AUC `0.660`), while
-the best models on test have shallower trees (evaluation AUC `0.682`, but low test AUC `0.670`).
-Therefore one can reduce overfitting by restricting the space to shallower trees (effectively regularizing).
+the best models on test have shallower trees (evaluation AUC `0.682`, test AUC `0.670`).
+Therefore one could reduce overfitting by restricting the space to shallower trees (effectively regularizing).
 
 More details [here](https://htmlpreview.github.io/?https://github.com/szilard/GBM-tune/blob/master/3-test_rs/analyze-10K.html).
 
