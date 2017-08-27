@@ -89,6 +89,6 @@ Size    |  eval AUC      |  test AUC |
 
 The best models selected based on evaluation AUC are not anymore the best models on test, the correlation is now low `~0.25`.
 
-
+![](3-test_rs/fig-10K-AUCcorr.png)
 
 
