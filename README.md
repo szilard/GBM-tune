@@ -1,18 +1,22 @@
 
 ## Tuning GBMs (hyperparameter tuning) and impact on out-of-sample predictions
 
-The goal of this repo is to study the impact of having one dataset/sample/"the dataset"  
+The goal of this repo is to study the impact of having one dataset/sample ("the dataset") 
 when training and tuning machine learning models in practice (or in competitions) 
 on the prediction accuracy on new data  
 (that usually comes from a slightly different distribution due to non-stationarity).
 
 To keep things simple we focus on binary classification, use only one source dataset 
 with mix of numeric and categorical features and no missing values, we don't perform feature engineering,
-tune only GBMs with `lightgbm` and random hyperparameter search (might also ensemble the best models), and 
+tune only GBMs with `lightgbm` and random hyperparameter search (might also ensemble the best models later), and 
 we use only AUC as a measure of accuracy.
 
-From the source data we pick 1 year of data for training/tuning and the following 1 year for testing (hold-out).
-We take samples of give sizes (e.g. 10K, 100K, 1M records) from these. 
+Unlike in most practical applications or in competitions such as Kaggle, we create the following
+laboratory/controlled environment that allows us to study the effects of sample variations in repeated 
+experiments. We pick a public dataset that spans over several years (the well known airline dataset).
+From this source data we pick 1 year of "master" data for training/tuning and the following 1 year for testing (hold-out).
+We take samples of give sizes (e.g. 10K, 100K, 1M records) from the "master" training set and 
+samples of 100K from the "master" test set. 
 
 We choose a grid of hyperparameter values and take 100 random combinations from the grid.
 For each hyperparameter combination we repeat the following resampling procedure 20 times:
