@@ -110,6 +110,9 @@ The best models based on evaluation AUC have deeper trees (evaluation AUC `0.701
 the best models on test have shallower trees (evaluation AUC `0.682`, test AUC `0.670`).
 Therefore one could reduce overfitting by restricting the space to shallower trees (effectively regularizing).
 
+Also, the above evaluation AUC is a biased estimate for the AUC of the best model even on the training set (thanks @preko for
+pointing this out). 
+
 More details [here](https://htmlpreview.github.io/?https://github.com/szilard/GBM-tune/blob/master/2-train_test_1each/analyze-10K-100.html) and
 [here](https://htmlpreview.github.io/?https://github.com/szilard/GBM-tune/blob/master/3-test_rs/analyze-10K.html).
 
