@@ -65,8 +65,9 @@ leading to evaluation AUC `0.815` and test AUC `0.745` (the training data is com
 data is coming from the next year, therefore the decrease in prediction accuracy).
 
 The runtime and number of trees for the different hyperparameter combinations vary, the total training time
-for the 100 random hyperparameter trials with 20 train resamples each is `~6 hrs`, while adding prediction time we
-arrive at `~8 hrs` total runtime (the experiment can be easily parallelized to multiple servers as the trials in the random
+for the 100 random hyperparameter trials with 20 train resamples each is `~6 hrs`, while adding prediction time 
+for 1 test set (initially) we have '~7 hrs' total runtime, while further on 20 resamples of the test set `~26 hrs`
+total run time (the experiment can be easily parallelized to multiple servers as the trials in the random
 search are completely independent).
 
 More details [here](https://htmlpreview.github.io/?https://github.com/szilard/GBM-tune/blob/master/2-train_test_1each/analyze-100K-100.html) and
