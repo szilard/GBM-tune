@@ -3,8 +3,8 @@
 
 The goal of this repo is to study the impact of having one dataset/sample ("the dataset") 
 when training and tuning machine learning models in practice (or in competitions) 
-on the prediction accuracy on new data  
-(that usually comes from a slightly different distribution due to non-stationarity).
+on the prediction accuracy on new data (that usually comes from a slightly different
+distribution due to non-stationarity).
 
 To keep things simple we focus on binary classification, use only one source dataset 
 with mix of numeric and categorical features and no missing values, we don't perform feature engineering,
@@ -105,5 +105,17 @@ Therefore one could reduce overfitting by restricting the space to shallower tre
 
 More details [here](https://htmlpreview.github.io/?https://github.com/szilard/GBM-tune/blob/master/2-train_test_1each/analyze-10K-100.html) and
 [here](https://htmlpreview.github.io/?https://github.com/szilard/GBM-tune/blob/master/3-test_rs/analyze-10K.html).
+
+
+### Note on training size
+
+
+
+### Larger hyperparameter search (1000 random trials)
+
+
+
+### Variation of best model selected vs training sample
+
 
 
