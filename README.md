@@ -32,6 +32,7 @@ the information from the resampling procedure without access to the test set). I
 the test set itself as well, therefore we obtain averages and standard errors for the test AUC.
 
 
+
 ### Train set size 100K records 
 
 The evaluation AUC of the 100 random hyperparameter trials vs their ranking
@@ -71,6 +72,7 @@ search are completely independent).
 More details [here]().
 
 
+
 ### Train set size 1M records 
 
 The correlation between evaluation/model selection AUC and test AUC is even higher (Pearson/rank correlation `~0.97`),
@@ -90,6 +92,7 @@ Size    |  eval AUC      |  test AUC     |
 More details [here](https://htmlpreview.github.io/?https://github.com/szilard/GBM-tune/blob/master/2-train_test_1each/analyze-1M-100.html).
 
 
+
 ### Train set size 10K records 
 
 The best models selected based on evaluation AUC are not anymore the best models on test, the correlation is now low `~0.25`.
@@ -107,15 +110,20 @@ More details [here](https://htmlpreview.github.io/?https://github.com/szilard/GB
 [here](https://htmlpreview.github.io/?https://github.com/szilard/GBM-tune/blob/master/3-test_rs/analyze-10K.html).
 
 
+
 ### Note on training size
+
+...
 
 
 
 ### Larger hyperparameter search (1000 random trials)
 
+...
+
 
 
 ### Variation of best model selected vs training sample
 
-
+...
 
