@@ -66,7 +66,7 @@ data is coming from the next year, therefore the decrease in prediction accuracy
 
 The runtime and number of trees for the different hyperparameter combinations vary, the total training time
 for the 100 random hyperparameter trials with 20 train resamples each is `~6 hrs`, while adding prediction time 
-for 1 test set (initially) we have '~7 hrs' total runtime, while further on 20 resamples of the test set `~26 hrs`
+for 1 test set (initially) we have `~7 hrs` total runtime, while further on 20 resamples of the test set `~26 hrs`
 total run time (the experiment can be easily parallelized to multiple servers as the trials in the random
 search are completely independent).
 
@@ -101,7 +101,9 @@ The best models selected based on evaluation AUC are not anymore the best models
 
 ![](3-test_rs/fig-10K-AUCcorr.png)
 
-It seems 10K is just *not enough data* for this (some of the variables have 100s of categories and some appear with low frequency), 
+It seems 10K is just *not enough data* for obtaining a good model out-of-sample 
+(some of the variables have 100s of categories and some appear with low frequency,
+so this result is not completely unexpected), 
 and even with cross validation there is some kind of *overfitting* here. 
 
 The best models based on evaluation AUC have deeper trees (evaluation AUC `0.701`, but low test AUC `0.660`), while
