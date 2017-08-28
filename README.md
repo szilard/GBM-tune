@@ -38,15 +38,15 @@ the test set itself as well, therefore we obtain averages and standard errors fo
 The evaluation AUC of the 100 random hyperparameter trials vs their ranking
 (errorbars based on train 80-10-10 resampling):
 
-TODO: fig
+![](3-test_rs/fig-100K-AUCrs_rank.png)
 
 The test AUC vs evaluation ranking (errorbars based on testset resampling):
 
-TODO: fig
+![](3-test_rs/fig-100K-AUCtest_rank.png)
 
 Test vs evaluation AUC (with errorbars based on train 80-10-10 and test resampling, respectively):
 
-TODO: fig
+![](3-test_rs/fig-100K-AUCcorr.png)
 
 The top models selected by evaluation AUC are also top in test AUC, the correlation between
 evaluation/model selection AUC and test AUC is high (Pearson and rank correlation `~0.75`).
