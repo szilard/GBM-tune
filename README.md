@@ -69,7 +69,8 @@ for the 100 random hyperparameter trials with 20 train resamples each is `~6 hrs
 arrive at `~8 hrs` total runtime (the experiment can be easily parallelized to multiple servers as the trials in the random
 search are completely independent).
 
-More details [here]().
+More details [here](https://htmlpreview.github.io/?https://github.com/szilard/GBM-tune/blob/master/2-train_test_1each/analyze-100K-100.html) and
+[here](https://htmlpreview.github.io/?https://github.com/szilard/GBM-tune/blob/master/3-test_rs/analyze-100K.html).
 
 
 
