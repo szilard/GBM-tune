@@ -118,7 +118,7 @@ More details [here](https://htmlpreview.github.io/?https://github.com/szilard/GB
 
 
 
-### Note on training size
+### Note on train set sizes
 
 ...
 
@@ -131,6 +131,12 @@ More details [here](https://htmlpreview.github.io/?https://github.com/szilard/GB
 
 
 ### Variation of best model selected vs training sample
+
+...
+
+
+
+### Ensembles 
 
 ...
 
