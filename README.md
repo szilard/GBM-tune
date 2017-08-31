@@ -132,11 +132,17 @@ We ran 1000 random trials on 100K data (~60 hrs runtime on 8 physical core serve
 
 With these many trials the best model is a bit overfit to the training set and it is not the best model on the test set.
 
-Size    |  eval AUC      |  test AUC     | 
+Trials  |  eval AUC      |  test AUC     | 
 --------|----------------|---------------|
-10K     | 0.701 / 0.682  | 0.660 / 0.670 |
+100     |   0.815        |   0.745       |
+1000    | 0.821 / 0.807  | 0.744 / 0.746 |
 
-More details [here](https://htmlpreview.github.io/?https://github.com/szilard/GBM-tune/blob/master/2-train_test_1each/analyze-1M-100.html).
+The best model on the test set (in practice one could/should not get that) is also a bit overfit to the test set. If one does moultiple
+resamples of the test set (which we did not do here because of the extra computational costs), the best model on the "average" test set
+would still be (slightly) overfitted to the test distribution (since that's likely to be a bit different than the train distribution
+because of temporal separation).
+
+More details [here](https://htmlpreview.github.io/?https://github.com/szilard/GBM-tune/blob/master/2-train_test_1each/analyze-100K-1000.html).
 
 
 
