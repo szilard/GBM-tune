@@ -130,7 +130,7 @@ We ran 1000 random trials on 100K data (~60 hrs runtime on 8 physical core serve
 
 ![](2-train_test_1each/fig-100K-1000-AUCcorr.png)
 
-With these many trials the best model is a bit overfit to the training set and it is not the best model on the test set.
+With these many trials the best model (cross-validation) is a bit overfit to the training set and it is not the best model on the test set.
 
 Trials  |  eval AUC      |  test AUC     | 
 --------|----------------|---------------|
