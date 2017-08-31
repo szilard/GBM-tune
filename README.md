@@ -137,7 +137,7 @@ Trials  |  eval AUC      |  test AUC     |
 100     |   0.815        |   0.745       |
 1000    | 0.821 / 0.807  | 0.744 / 0.746 |
 
-The best model on the test set (in practice one could/should not get that!!!) is also a bit overfit to the test set. If one does multiple
+The best model on the test set (you cannot do that for model selection!!!) is also a bit overfit to the test set. If one does multiple
 resamples of the test set (which we did not do here because of the extra computational costs), the best model on the "average" test set
 would still be (slightly) overfitted to the test distribution (since that's likely to be a bit different than the train distribution
 because of temporal separation).
