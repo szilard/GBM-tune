@@ -1,0 +1,69 @@
+```{r}
+
+library(data.table)
+library(dplyr)
+library(ggplot2)
+
+d_pm_res <- fread("res-100K-1000.csv")
+
+
+d_pm_res %>% mutate(rank = dense_rank(desc(auc_rs_avg))) %>% ggplot() + geom_point(aes(x = rank, y = auc_rs_avg), size = 0.2) +
+  geom_errorbar(aes(x = rank, ymin = auc_rs_avg-auc_rs_std, ymax = auc_rs_avg+auc_rs_std), width = 1, alpha = 0.2)
+
+d_pm_res %>% ggplot() + geom_point(aes(x = auc_test, y = auc_rs_avg), alpha = 0.3, size = 0.5) +
+  geom_errorbar(aes(x = auc_test, ymin = auc_rs_avg-auc_rs_std, ymax = auc_rs_avg+auc_rs_std), width = 0.0003, alpha = 0.3) +
+  geom_abline(slope = 1, color = "grey70")
+
+auc_test_top <- sort(d_pm_res$auc_test, decreasing = TRUE)[10]
+d_pm_res %>% mutate(rank = dense_rank(desc(auc_rs_avg))) %>% mutate(is_top = auc_test>=auc_test_top) %>% 
+  ggplot(aes(color = is_top)) + geom_point(aes(x = rank, y = auc_rs_avg)) +
+  geom_errorbar(aes(x = rank, ymin = auc_rs_avg-auc_rs_std, ymax = auc_rs_avg+auc_rs_std), width = 0.3)
+
+
+cor(d_pm_res$auc_rs_avg, d_pm_res$auc_test)
+cor(d_pm_res$auc_rs_avg, d_pm_res$auc_test, method = "spearman")
+
+
+d_pm_res %>% arrange(desc(auc_rs_avg)) %>% head(10)
+d_pm_res %>% arrange(desc(auc_test)) %>% head(10)
+
+
+d_pm_res %>% arrange(desc(auc_rs_avg)) %>% tail(10)
+d_pm_res %>% arrange(desc(auc_test)) %>% tail(10)
+
+
+d_pm_res %>% mutate(rank = dense_rank(desc(auc_rs_avg))) %>% ggplot() + geom_point(aes(x = rank, y = num_leaves), alpha = 0.3) + scale_y_log10()
+
+d_pm_res %>% mutate(rank = dense_rank(desc(auc_rs_avg))) %>% ggplot() + geom_point(aes(x = rank, y = learning_rate), alpha = 0.3) + scale_y_log10()
+
+d_pm_res %>% mutate(rank = dense_rank(desc(auc_rs_avg))) %>% ggplot() + geom_point(aes(x = rank, y = min_data_in_leaf), alpha = 0.3) + scale_y_log10()
+
+d_pm_res %>% mutate(rank = dense_rank(desc(auc_rs_avg))) %>% ggplot() + geom_point(aes(x = rank, y = feature_fraction), alpha = 0.3) 
+
+d_pm_res %>% mutate(rank = dense_rank(desc(auc_rs_avg))) %>% ggplot() + geom_point(aes(x = rank, y = bagging_fraction), alpha = 0.3) 
+
+d_pm_res %>% mutate(rank = dense_rank(desc(auc_rs_avg))) %>% ggplot() + geom_point(aes(x = rank, y = lambda_l1), alpha = 0.3) 
+
+d_pm_res %>% mutate(rank = dense_rank(desc(auc_rs_avg))) %>% ggplot() + geom_point(aes(x = rank, y = lambda_l2), alpha = 0.3) 
+
+
+
+d_pm_res %>% mutate(rank = dense_rank(desc(auc_rs_avg))) %>% ggplot() + geom_point(aes(x = rank, y = ntrees), alpha = 0.3)
+
+d_pm_res %>% mutate(rank = dense_rank(desc(auc_rs_avg))) %>% ggplot() + geom_point(aes(x = rank, y = ntrees), alpha = 0.3) + scale_y_log10(breaks=c(30,100,300,1000,3000))
+
+d_pm_res %>% mutate(rank = dense_rank(desc(auc_rs_avg))) %>% ggplot() + geom_point(aes(x = rank, y = runtm), alpha = 0.3) 
+
+d_pm_res %>% mutate(rank = dense_rank(desc(auc_rs_avg))) %>% ggplot() + geom_point(aes(x = rank, y = runtm), alpha = 0.3) + scale_y_log10(breaks=c(1,3,10,30,100))
+
+
+
+summary(d_pm_res$runtm)
+
+mean(d_pm_res$runtm)*20*100/3600
+
+
+summary(d_pm_res$ntree)
+
+
+```
