@@ -126,7 +126,18 @@ More details [here](https://htmlpreview.github.io/?https://github.com/szilard/GB
 
 ### Larger hyperparameter search (1000 random trials)
 
-...
+We ran 1000 random trials on 100K data (~60 hrs runtime on 8 physical core server, one could parallelize the trials on different servers/more cores).
+
+![](2-train_test_1each/fig-100K-1000-AUCcorr.png)
+
+With these many trials the best model is a bit overfit to the training set and it is not the best model on the test set.
+
+Size    |  eval AUC      |  test AUC     | 
+--------|----------------|---------------|
+10K     | 0.701 / 0.682  | 0.660 / 0.670 |
+
+More details [here](https://htmlpreview.github.io/?https://github.com/szilard/GBM-tune/blob/master/2-train_test_1each/analyze-1M-100.html).
+
 
 
 
