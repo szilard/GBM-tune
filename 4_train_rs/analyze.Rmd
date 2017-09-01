@@ -1,0 +1,24 @@
+```{r}
+
+library(data.table)
+library(dplyr)
+library(ggplot2)
+
+d <- fread("res.csv")
+
+d %>% select(krpm, ktr, auc_rs_avg, auc_rs_std) %>% melt(id.vars = c("krpm","ktr")) %>% 
+  dcast(krpm ~ variable + ktr, value.var = "value") %>% 
+  ggplot(aes(x = auc_rs_avg_1, y = auc_rs_avg_2)) + geom_point() + geom_abline(color = "grey70") +
+  geom_errorbar(aes(x = auc_rs_avg_1, ymin = auc_rs_avg_2 - auc_rs_std_2, ymax = auc_rs_avg_2 + auc_rs_std_2), width = 0.0003, alpha = 0.3) +
+  geom_errorbarh(aes(xmin = auc_rs_avg_1 - auc_rs_std_1, xmax = auc_rs_avg_1 + auc_rs_std_1, y = auc_rs_avg_2), height = 0.0003, alpha = 0.3) + 
+  theme(aspect.ratio=1)
+
+d %>% select(krpm, ktr, auc_test_avg, auc_test_sd) %>% melt(id.vars = c("krpm","ktr")) %>% 
+  dcast(krpm ~ variable + ktr, value.var = "value") %>% 
+  ggplot(aes(x = auc_test_avg_1, y = auc_test_avg_2)) + geom_point() + geom_abline(color = "grey70") +
+  geom_errorbar(aes(ymin = auc_test_avg_2 - auc_test_sd_2, ymax = auc_test_avg_2 + auc_test_sd_2), width = 0.0003, alpha = 0.3) +
+  geom_errorbarh(aes(xmin = auc_test_avg_1 - auc_test_sd_1, xmax = auc_test_avg_1 + auc_test_sd_1), height = 0.0003, alpha = 0.3) +
+  theme(aspect.ratio=1)
+
+
+```
