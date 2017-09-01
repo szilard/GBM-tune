@@ -127,8 +127,10 @@ for (krpm in 1:nrow(params_random)) {
               params = params,
               nrounds = 10000, early_stopping_rounds = 10, valid = list(valid = dlgb_earlystop), 
               categorical_feature = cols_cats, 
+              reset_data = TRUE, 
               verbose = 0)
     })[[3]]
+    gc(verbose = FALSE)
     
     phat <- predict(md, data = d_modelselec[,1:p])
     rocr_pred <- prediction(phat, d_modelselec[,p+1])
