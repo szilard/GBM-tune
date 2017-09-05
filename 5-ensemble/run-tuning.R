@@ -170,12 +170,12 @@ for (i in 1:n_test_rs) {
   cat("ensemble  pred test - i:",i,"\n")
   d_test <- d_test_list[[i]]
   phat_avg1 <- matrix(0, nrow = n_rs_best, ncol = nrow(d_test))
-  for (krpm in 1:krpm_top) {
+  for (j in 1:n_rs_best) {
     phat <- matrix(0, nrow = n_resample, ncol = nrow(d_test))
     for (k in 1:n_resample) {
-      phat[k,] <- predict(mds[[krpm]][[k]], data = d_test[,1:p])
+      phat[k,] <- predict(mds[[krpm_top[j]]][[k]], data = d_test[,1:p])
     }
-    phat_avg1[krpm,] <- apply(phat, 2, mean)   
+    phat_avg1[j,] <- apply(phat, 2, mean)   
   }
   phat_avg2 <- apply(phat_avg1, 2, mean)   
   rocr_pred <- prediction(phat_avg2, d_test[,p+1])
