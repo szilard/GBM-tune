@@ -1,0 +1,16 @@
+```{r}
+
+library(data.table)
+library(dplyr)
+library(ggplot2)
+
+d <- fread("res.csv")
+
+d %>% arrange(desc(auc_test_avg)) %>% head
+
+d %>% mutate(is_ens = krpm==0) %>% group_by(is_ens) %>% mutate(rank = dense_rank(desc(auc_rs_avg))) %>% 
+  mutate(rank = ifelse(is_ens,-4,rank)) %>% 
+  ggplot() + geom_point(aes(x = rank, y = auc_test_avg, color = is_ens)) +
+  geom_errorbar(aes(x = rank, ymin = auc_test_avg-auc_test_sd, ymax = auc_test_avg+auc_test_sd, color = is_ens), width = 1) + scale_color_manual(values = c("black","red"))
+
+```
