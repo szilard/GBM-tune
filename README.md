@@ -167,5 +167,10 @@ variation therefore the best models must be somewhat different. TODO: More rease
 
 ### Ensembles 
 
-...
+The test AUC of the average of the top 10 models (of the 100 with random hyperparameter search, selected based on
+resample AUC):
+
+![](5-ensemble/fig-AUCens.png)
+
+TODO: Stacking or some other more sophisticated way of ensembling models (vs simple average of top 10 above).
 
