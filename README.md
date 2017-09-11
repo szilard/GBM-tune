@@ -155,6 +155,13 @@ For 100K records, the resample AUC for 2 train resamples with the same hyperpara
 
 ![](4-train_rs/fig-AUCcorr.png)
 
+The correlation (both Pearson and rank) of the 2 above is `~0.95`.
+
+A similar graph and correlation is found if one looks at AUC on the test data. 
+
+Therefore, it seems that 100K records is enough to get similar hyperparameter values and best model 
+not depending too much of the given training sample. 
+
 
 
 ### Ensembles 
