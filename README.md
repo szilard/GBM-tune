@@ -170,11 +170,12 @@ variation therefore the best models must be somewhat different. TODO: More rease
 ### Ensembles 
 
 The test AUC of the average of the top 10 models (of the 100 with random hyperparameter search, selected based on
-resample AUC) (in red) and the AUC of all the models (horizontal axis rank based on resample AUC):
+resample AUC) (in red) and the AUC of all the models (horizontal axis `rank` based on resample AUC):
 
 ![](5-ensemble/fig-AUCens.png)
 
 More details [here](https://htmlpreview.github.io/?https://github.com/szilard/GBM-tune/blob/master/5-ensemble/analyze.html).
 
+Interesting that this simple ensemble does not beat the best model.
 TODO: Stacking or some other more sophisticated way of ensembling models (vs simple average of top 10 above).
 
