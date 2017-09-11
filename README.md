@@ -148,7 +148,12 @@ More details [here](https://htmlpreview.github.io/?https://github.com/szilard/GB
 
 ### Variation of best model selected vs training sample
 
-...
+We repeat the above experiments with resampling the train set from the source data. This is to study
+the sensitivity of the results w.r.t. a given sample. 
+
+For 100K records, the resample AUC for 2 train resamples with the same hyperparameter values:
+
+![](4-train_rs/fig-AUCcorr.png)
 
 
 

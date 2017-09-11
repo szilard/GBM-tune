@@ -20,5 +20,13 @@ d %>% select(krpm, ktr, auc_test_avg, auc_test_sd) %>% melt(id.vars = c("krpm","
   geom_errorbarh(aes(xmin = auc_test_avg_1 - auc_test_sd_1, xmax = auc_test_avg_1 + auc_test_sd_1), height = 0.0003, alpha = 0.3) +
   theme(aspect.ratio=1)
 
+d %>% arrange(desc(auc_rs_avg)) %>% head
+
+cor(filter(d, ktr==1)$auc_rs_avg, filter(d, ktr==2)$auc_rs_avg)
+cor(filter(d, ktr==1)$auc_test_avg, filter(d, ktr==2)$auc_test_avg)
+
+cor(filter(d, ktr==1)$auc_rs_avg, filter(d, ktr==2)$auc_rs_avg, method = "spearman")
+cor(filter(d, ktr==1)$auc_test_avg, filter(d, ktr==2)$auc_test_avg, method = "spearman")
+
 
 ```
