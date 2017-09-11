@@ -159,8 +159,9 @@ The correlation (both Pearson and rank) of the 2 above is `~0.95`.
 
 A similar graph and correlation is found if one looks at AUC on the test data. 
 
-Therefore, it seems that 100K records is enough to get similar hyperparameter values and best model 
-not depending too much of the given training sample. 
+Therefore, it seems that 100K records is enough to get similar best hyperparameter values 
+not depending too much of the given training sample. However, the test AUC shows some
+variation therefore the best models must be somewhat different. TODO: More reaserch to clarify this.
 
 
 
