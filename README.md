@@ -159,6 +159,8 @@ The correlation (both Pearson and rank) of the 2 above is `~0.95`.
 
 A similar graph and correlation is found if one looks at AUC on the test data. 
 
+More details [here](https://htmlpreview.github.io/?https://github.com/szilard/GBM-tune/blob/master/4-train_rs/analyze.html).
+
 Therefore, it seems that 100K records is enough to get similar best hyperparameter values 
 not depending too much of the given training sample. However, the test AUC shows some
 variation therefore the best models must be somewhat different. TODO: More reaserch to clarify this.
@@ -168,9 +170,11 @@ variation therefore the best models must be somewhat different. TODO: More rease
 ### Ensembles 
 
 The test AUC of the average of the top 10 models (of the 100 with random hyperparameter search, selected based on
-resample AUC):
+resample AUC) (in red) and the AUC of all the models (horizontal axis rank based on resample AUC):
 
 ![](5-ensemble/fig-AUCens.png)
+
+More details [here](https://htmlpreview.github.io/?https://github.com/szilard/GBM-tune/blob/master/5-ensemble/analyze.html).
 
 TODO: Stacking or some other more sophisticated way of ensembling models (vs simple average of top 10 above).
 
